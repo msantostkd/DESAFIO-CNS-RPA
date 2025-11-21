@@ -25,8 +25,8 @@ Para rodar a solução Python, siga os passos abaixo:
 
 #### 1. Configurar o Ambiente Virtual (venv)
 
-```bash
 python -m venv venv
 # Ative o ambiente
 source venv/bin/activate  # Linux/macOS
 # ou .\venv\Scripts\activate  # Windows (PowerShell)
+
