@@ -1,0 +1,6 @@
+{
+  "Name": "RPA_Integracao_API_BB",
+  "ProjectType": "Process",
+  "Description": "Blank Process",
+  "MainFile": "Main.xaml"
+}
