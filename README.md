@@ -17,7 +17,7 @@ Esta seção atende aos requisitos de documentação do projeto UiPath.
 
 ### 1.1 Pré-requisitos e Bibliotecas Necessárias
 
-* **Software:** UiPath Studio (Versão **[INDICAR VERSÃO]**).
+* **Software:** UiPath Studio (Versão **2026.0.181 STS**).
 * **Dependências (Bibliotecas):**
     * `UiPath.System.Activities` (Padrão).
     * `UiPath.WebAPI.Activities` (Essencial para as chamadas HTTP Request, autenticação OAuth2 e manipulação JSON).
