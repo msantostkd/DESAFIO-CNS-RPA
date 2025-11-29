@@ -41,9 +41,9 @@
         "C:\\Users\\msant\\.nuget\\packages\\uipath.codedworkflows\\24.10.1\\lib/net6.0-windows7.0/UiPath.CodedWorkflows.dll",
         "C:\\Users\\msant\\.nuget\\packages\\uipath.excel.activities\\3.3.1\\lib/net6.0-windows7.0/UiPath.Excel.Activities.API.dll",
         "C:\\Users\\msant\\.nuget\\packages\\uipath.excel.activities\\3.3.1\\lib/net6.0-windows7.0/UiPath.Excel.Activities.Design.dll",
-        "C:\\Users\\msant\\.nuget\\packages\\uipath.excel.activities\\3.3.1\\lib/net6.0-windows7.0/UiPath.Excel.Activities.dll",
         "C:\\Users\\msant\\.nuget\\packages\\uipath.excel.activities\\3.3.1\\lib/net6.0-windows7.0/UiPath.Excel.Activities.Package.dll",
         "C:\\Users\\msant\\.nuget\\packages\\uipath.excel.activities\\3.3.1\\lib/net6.0-windows7.0/UiPath.Excel.Activities.ViewModels.dll",
+        "C:\\Users\\msant\\.nuget\\packages\\uipath.excel.activities\\3.3.1\\lib/net6.0-windows7.0/UiPath.Excel.Activities.dll",
         "C:\\Users\\msant\\.nuget\\packages\\uipath.excel.activities\\3.3.1\\lib/net6.0-windows7.0/UiPath.Excel.dll",
         "C:\\Users\\msant\\.nuget\\packages\\uipath.officelibs\\1.0.0\\lib/net6.0-windows7.0/Microsoft.Office.Interop.Excel.dll",
         "C:\\Users\\msant\\.nuget\\packages\\uipath.officelibs\\1.0.0\\lib/net6.0-windows7.0/Microsoft.Office.Interop.Outlook.dll",
@@ -60,8 +60,45 @@
     },
     {
       "Package": {
+        "Id": "UiPath.WebAPI.Activities",
+        "Version": "2.3.1"
+      },
+      "Assemblies": [
+        "C:\\Users\\msant\\.nuget\\packages\\avalonedit\\6.1.3.50\\lib/net6.0-windows7.0/ICSharpCode.AvalonEdit.dll",
+        "C:\\Users\\msant\\.nuget\\packages\\microsoft.extensions.caching.abstractions\\9.0.3\\lib/net8.0/Microsoft.Extensions.Caching.Abstractions.dll",
+        "C:\\Users\\msant\\.nuget\\packages\\microsoft.extensions.caching.memory\\9.0.3\\lib/net8.0/Microsoft.Extensions.Caching.Memory.dll",
+        "C:\\Users\\msant\\.nuget\\packages\\microsoft.extensions.dependencyinjection\\6.0.2\\lib/net6.0/Microsoft.Extensions.DependencyInjection.dll",
+        "C:\\Users\\msant\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\9.0.3\\lib/net8.0/Microsoft.Extensions.DependencyInjection.Abstractions.dll",
+        "C:\\Users\\msant\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\9.0.3\\lib/net8.0/Microsoft.Extensions.Logging.Abstractions.dll",
+        "C:\\Users\\msant\\.nuget\\packages\\microsoft.extensions.options\\9.0.3\\lib/net8.0/Microsoft.Extensions.Options.dll",
+        "C:\\Users\\msant\\.nuget\\packages\\microsoft.extensions.primitives\\9.0.3\\lib/net8.0/Microsoft.Extensions.Primitives.dll",
+        "C:\\Users\\msant\\.nuget\\packages\\newtonsoft.json\\13.0.3\\lib/net6.0/Newtonsoft.Json.dll",
+        "C:\\Users\\msant\\.nuget\\packages\\nito.asyncex.context\\5.1.2\\lib/netstandard2.0/Nito.AsyncEx.Context.dll",
+        "C:\\Users\\msant\\.nuget\\packages\\nito.asyncex.coordination\\5.1.2\\lib/netstandard2.0/Nito.AsyncEx.Coordination.dll",
+        "C:\\Users\\msant\\.nuget\\packages\\nito.asyncex.interop.waithandles\\5.1.2\\lib/netstandard2.0/Nito.AsyncEx.Interop.WaitHandles.dll",
+        "C:\\Users\\msant\\.nuget\\packages\\nito.asyncex.oop\\5.1.2\\lib/netstandard2.0/Nito.AsyncEx.Oop.dll",
+        "C:\\Users\\msant\\.nuget\\packages\\nito.asyncex.tasks\\5.1.2\\lib/netstandard2.0/Nito.AsyncEx.Tasks.dll",
+        "C:\\Users\\msant\\.nuget\\packages\\nito.cancellation\\1.1.2\\lib/netstandard2.0/Nito.Cancellation.dll",
+        "C:\\Users\\msant\\.nuget\\packages\\nito.collections.deque\\1.1.1\\lib/netstandard2.0/Nito.Collections.Deque.dll",
+        "C:\\Users\\msant\\.nuget\\packages\\nito.disposables\\2.2.1\\lib/netstandard2.1/Nito.Disposables.dll",
+        "C:\\Users\\msant\\.nuget\\packages\\restsharp\\106.15.0\\lib/netstandard2.0/RestSharp.dll",
+        "C:\\Users\\msant\\.nuget\\packages\\system.activities.viewmodels\\1.20251103.2\\lib/net6.0-windows7.0/System.Activities.ViewModels.dll",
+        "C:\\Users\\msant\\.nuget\\packages\\system.io.abstractions\\3.0.10\\lib/netstandard2.0/System.IO.Abstractions.dll",
+        "C:\\Users\\msant\\.nuget\\packages\\uipath.opentelemetry.contracts\\2.3.3\\lib/netstandard2.0/UiPath.OpenTelemetry.Contracts.dll",
+        "C:\\Users\\msant\\.nuget\\packages\\uipath.platform\\25.10.1\\lib/net6.0-windows7.0/UiPath.Platform.dll",
+        "C:\\Users\\msant\\.nuget\\packages\\uipath.telemetry.client\\2.3.3\\lib/netstandard2.0/TelemetryClient.dll",
+        "C:\\Users\\msant\\.nuget\\packages\\uipath.webapi.activities\\2.3.1\\lib/net6.0-windows7.0/UiPath.Web.Activities.Design.dll",
+        "C:\\Users\\msant\\.nuget\\packages\\uipath.webapi.activities\\2.3.1\\lib/net6.0-windows7.0/UiPath.Web.Activities.RulesLibrary.dll",
+        "C:\\Users\\msant\\.nuget\\packages\\uipath.webapi.activities\\2.3.1\\lib/net6.0-windows7.0/UiPath.Web.Activities.ViewModels.dll",
+        "C:\\Users\\msant\\.nuget\\packages\\uipath.webapi.activities.runtime\\2.3.1\\lib/net6.0-windows7.0/UiPath.Web.Activities.dll",
+        "C:\\Users\\msant\\.nuget\\packages\\uipath.webapi.activities.runtime\\2.3.1\\lib/net6.0-windows7.0/UiPath.Web.dll"
+      ],
+      "Path": "C:\\Users\\msant\\.nuget\\packages\\uipath.webapi.activities\\2.3.1"
+    },
+    {
+      "Package": {
         "Id": "UiPath.System.Activities",
-        "Version": "25.10.3"
+        "Version": "25.10.0"
       },
       "Assemblies": [
         "C:\\Users\\msant\\.nuget\\packages\\csvhelper\\33.0.1\\lib/net8.0/CsvHelper.dll",
@@ -149,53 +186,16 @@
         "C:\\Users\\msant\\.nuget\\packages\\uipath.codedworkflows\\24.10.1\\lib/net6.0-windows7.0/UiPath.CodedWorkflows.dll",
         "C:\\Users\\msant\\.nuget\\packages\\uipath.opentelemetry.contracts\\2.3.3\\lib/netstandard2.0/UiPath.OpenTelemetry.Contracts.dll",
         "C:\\Users\\msant\\.nuget\\packages\\uipath.platform\\25.10.1\\lib/net6.0-windows7.0/UiPath.Platform.dll",
-        "C:\\Users\\msant\\.nuget\\packages\\uipath.system.activities\\25.10.3\\lib/net6.0-windows7.0/UiPath.System.Activities.Design.dll",
-        "C:\\Users\\msant\\.nuget\\packages\\uipath.system.activities\\25.10.3\\lib/net6.0-windows7.0/UiPath.System.Activities.ViewModels.dll",
-        "C:\\Users\\msant\\.nuget\\packages\\uipath.system.activities.runtime\\25.10.3\\lib/net6.0-windows7.0/UiPath.System.Activities.Package.Runtime.dll",
-        "C:\\Users\\msant\\.nuget\\packages\\uipath.system.activities.runtime.windows\\25.10.3\\lib/net6.0-windows7.0/UiPath.OrchestratorClient.dll",
-        "C:\\Users\\msant\\.nuget\\packages\\uipath.system.activities.runtime.windows\\25.10.3\\lib/net6.0-windows7.0/UiPath.ServiceClients.dll",
-        "C:\\Users\\msant\\.nuget\\packages\\uipath.system.activities.runtime.windows\\25.10.3\\lib/net6.0-windows7.0/UiPath.System.Activities.Api.dll",
-        "C:\\Users\\msant\\.nuget\\packages\\uipath.system.activities.runtime.windows\\25.10.3\\lib/net6.0-windows7.0/UiPath.System.Activities.dll",
+        "C:\\Users\\msant\\.nuget\\packages\\uipath.system.activities\\25.10.0\\lib/net6.0-windows7.0/UiPath.System.Activities.Design.dll",
+        "C:\\Users\\msant\\.nuget\\packages\\uipath.system.activities\\25.10.0\\lib/net6.0-windows7.0/UiPath.System.Activities.ViewModels.dll",
+        "C:\\Users\\msant\\.nuget\\packages\\uipath.system.activities.runtime\\25.10.0\\lib/net6.0-windows7.0/UiPath.System.Activities.Package.Runtime.dll",
+        "C:\\Users\\msant\\.nuget\\packages\\uipath.system.activities.runtime.windows\\25.10.0\\lib/net6.0-windows7.0/UiPath.OrchestratorClient.dll",
+        "C:\\Users\\msant\\.nuget\\packages\\uipath.system.activities.runtime.windows\\25.10.0\\lib/net6.0-windows7.0/UiPath.ServiceClients.dll",
+        "C:\\Users\\msant\\.nuget\\packages\\uipath.system.activities.runtime.windows\\25.10.0\\lib/net6.0-windows7.0/UiPath.System.Activities.Api.dll",
+        "C:\\Users\\msant\\.nuget\\packages\\uipath.system.activities.runtime.windows\\25.10.0\\lib/net6.0-windows7.0/UiPath.System.Activities.dll",
         "C:\\Users\\msant\\.nuget\\packages\\uipath.telemetry.client\\2.3.3\\lib/netstandard2.0/TelemetryClient.dll"
       ],
-      "Path": "C:\\Users\\msant\\.nuget\\packages\\uipath.system.activities\\25.10.3"
-    },
-    {
-      "Package": {
-        "Id": "UiPath.WebAPI.Activities",
-        "Version": "2.3.2"
-      },
-      "Assemblies": [
-        "C:\\Users\\msant\\.nuget\\packages\\avalonedit\\6.1.3.50\\lib/net6.0-windows7.0/ICSharpCode.AvalonEdit.dll",
-        "C:\\Users\\msant\\.nuget\\packages\\microsoft.extensions.caching.abstractions\\9.0.3\\lib/net8.0/Microsoft.Extensions.Caching.Abstractions.dll",
-        "C:\\Users\\msant\\.nuget\\packages\\microsoft.extensions.caching.memory\\9.0.3\\lib/net8.0/Microsoft.Extensions.Caching.Memory.dll",
-        "C:\\Users\\msant\\.nuget\\packages\\microsoft.extensions.dependencyinjection\\6.0.2\\lib/net6.0/Microsoft.Extensions.DependencyInjection.dll",
-        "C:\\Users\\msant\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\9.0.3\\lib/net8.0/Microsoft.Extensions.DependencyInjection.Abstractions.dll",
-        "C:\\Users\\msant\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\9.0.3\\lib/net8.0/Microsoft.Extensions.Logging.Abstractions.dll",
-        "C:\\Users\\msant\\.nuget\\packages\\microsoft.extensions.options\\9.0.3\\lib/net8.0/Microsoft.Extensions.Options.dll",
-        "C:\\Users\\msant\\.nuget\\packages\\microsoft.extensions.primitives\\9.0.3\\lib/net8.0/Microsoft.Extensions.Primitives.dll",
-        "C:\\Users\\msant\\.nuget\\packages\\newtonsoft.json\\13.0.3\\lib/net6.0/Newtonsoft.Json.dll",
-        "C:\\Users\\msant\\.nuget\\packages\\nito.asyncex.context\\5.1.2\\lib/netstandard2.0/Nito.AsyncEx.Context.dll",
-        "C:\\Users\\msant\\.nuget\\packages\\nito.asyncex.coordination\\5.1.2\\lib/netstandard2.0/Nito.AsyncEx.Coordination.dll",
-        "C:\\Users\\msant\\.nuget\\packages\\nito.asyncex.interop.waithandles\\5.1.2\\lib/netstandard2.0/Nito.AsyncEx.Interop.WaitHandles.dll",
-        "C:\\Users\\msant\\.nuget\\packages\\nito.asyncex.oop\\5.1.2\\lib/netstandard2.0/Nito.AsyncEx.Oop.dll",
-        "C:\\Users\\msant\\.nuget\\packages\\nito.asyncex.tasks\\5.1.2\\lib/netstandard2.0/Nito.AsyncEx.Tasks.dll",
-        "C:\\Users\\msant\\.nuget\\packages\\nito.cancellation\\1.1.2\\lib/netstandard2.0/Nito.Cancellation.dll",
-        "C:\\Users\\msant\\.nuget\\packages\\nito.collections.deque\\1.1.1\\lib/netstandard2.0/Nito.Collections.Deque.dll",
-        "C:\\Users\\msant\\.nuget\\packages\\nito.disposables\\2.2.1\\lib/netstandard2.1/Nito.Disposables.dll",
-        "C:\\Users\\msant\\.nuget\\packages\\restsharp\\106.15.0\\lib/netstandard2.0/RestSharp.dll",
-        "C:\\Users\\msant\\.nuget\\packages\\system.activities.viewmodels\\1.20251103.2\\lib/net6.0-windows7.0/System.Activities.ViewModels.dll",
-        "C:\\Users\\msant\\.nuget\\packages\\system.io.abstractions\\3.0.10\\lib/netstandard2.0/System.IO.Abstractions.dll",
-        "C:\\Users\\msant\\.nuget\\packages\\uipath.opentelemetry.contracts\\2.3.3\\lib/netstandard2.0/UiPath.OpenTelemetry.Contracts.dll",
-        "C:\\Users\\msant\\.nuget\\packages\\uipath.platform\\25.10.1\\lib/net6.0-windows7.0/UiPath.Platform.dll",
-        "C:\\Users\\msant\\.nuget\\packages\\uipath.telemetry.client\\2.3.3\\lib/netstandard2.0/TelemetryClient.dll",
-        "C:\\Users\\msant\\.nuget\\packages\\uipath.webapi.activities\\2.3.2\\lib/net6.0-windows7.0/UiPath.Web.Activities.Design.dll",
-        "C:\\Users\\msant\\.nuget\\packages\\uipath.webapi.activities\\2.3.2\\lib/net6.0-windows7.0/UiPath.Web.Activities.RulesLibrary.dll",
-        "C:\\Users\\msant\\.nuget\\packages\\uipath.webapi.activities\\2.3.2\\lib/net6.0-windows7.0/UiPath.Web.Activities.ViewModels.dll",
-        "C:\\Users\\msant\\.nuget\\packages\\uipath.webapi.activities.runtime\\2.3.2\\lib/net6.0-windows7.0/UiPath.Web.Activities.dll",
-        "C:\\Users\\msant\\.nuget\\packages\\uipath.webapi.activities.runtime\\2.3.2\\lib/net6.0-windows7.0/UiPath.Web.dll"
-      ],
-      "Path": "C:\\Users\\msant\\.nuget\\packages\\uipath.webapi.activities\\2.3.2"
+      "Path": "C:\\Users\\msant\\.nuget\\packages\\uipath.system.activities\\25.10.0"
     }
   ],
   "Conflicts": [],
@@ -3330,11 +3330,11 @@
     },
     "UiPath.System.Activities": {
       "Id": "UiPath.System.Activities",
-      "Version": "25.10.3",
+      "Version": "25.10.0",
       "Dependencies": [
         {
           "Item1": "UiPath.System.Activities.Runtime",
-          "Item2": "[25.10.3, )"
+          "Item2": "[25.10.0, )"
         },
         {
           "Item1": "CsvHelper",
@@ -3390,7 +3390,7 @@
         },
         {
           "Item1": "System.Activities.ViewModels",
-          "Item2": "[1.0.0-20251030.4, )"
+          "Item2": "[1.0.0-20250814.2, )"
         },
         {
           "Item1": "System.Management.Automation",
@@ -3416,17 +3416,17 @@
     },
     "UiPath.System.Activities.Runtime": {
       "Id": "UiPath.System.Activities.Runtime",
-      "Version": "25.10.3",
+      "Version": "25.10.0",
       "Dependencies": [
         {
           "Item1": "UiPath.System.Activities.Runtime.Windows",
-          "Item2": "[25.10.3, )"
+          "Item2": "[25.10.0, )"
         }
       ]
     },
     "UiPath.System.Activities.Runtime.Windows": {
       "Id": "UiPath.System.Activities.Runtime.Windows",
-      "Version": "25.10.3",
+      "Version": "25.10.0",
       "Dependencies": [
         {
           "Item1": "CsvHelper",
@@ -3530,11 +3530,11 @@
     },
     "UiPath.WebAPI.Activities": {
       "Id": "UiPath.WebAPI.Activities",
-      "Version": "2.3.2",
+      "Version": "2.3.1",
       "Dependencies": [
         {
           "Item1": "UiPath.WebAPI.Activities.Runtime",
-          "Item2": "[2.3.2, )"
+          "Item2": "[2.3.1, )"
         },
         {
           "Item1": "AvalonEdit",
@@ -3568,7 +3568,7 @@
     },
     "UiPath.WebAPI.Activities.Runtime": {
       "Id": "UiPath.WebAPI.Activities.Runtime",
-      "Version": "2.3.2",
+      "Version": "2.3.1",
       "Dependencies": [
         {
           "Item1": "Microsoft.CSharp",
@@ -5744,9 +5744,9 @@
       "Assemblies": [
         "C:\\Users\\msant\\.nuget\\packages\\uipath.excel.activities\\3.3.1\\lib\\net6.0-windows7.0\\UiPath.Excel.Activities.API.dll",
         "C:\\Users\\msant\\.nuget\\packages\\uipath.excel.activities\\3.3.1\\lib\\net6.0-windows7.0\\UiPath.Excel.Activities.Design.dll",
-        "C:\\Users\\msant\\.nuget\\packages\\uipath.excel.activities\\3.3.1\\lib\\net6.0-windows7.0\\UiPath.Excel.Activities.dll",
         "C:\\Users\\msant\\.nuget\\packages\\uipath.excel.activities\\3.3.1\\lib\\net6.0-windows7.0\\UiPath.Excel.Activities.Package.dll",
         "C:\\Users\\msant\\.nuget\\packages\\uipath.excel.activities\\3.3.1\\lib\\net6.0-windows7.0\\UiPath.Excel.Activities.ViewModels.dll",
+        "C:\\Users\\msant\\.nuget\\packages\\uipath.excel.activities\\3.3.1\\lib\\net6.0-windows7.0\\UiPath.Excel.Activities.dll",
         "C:\\Users\\msant\\.nuget\\packages\\uipath.excel.activities\\3.3.1\\lib\\net6.0-windows7.0\\UiPath.Excel.dll"
       ],
       "Path": "C:\\Users\\msant\\.nuget\\packages\\uipath.excel.activities\\3.3.1"
@@ -5790,36 +5790,36 @@
     {
       "Package": {
         "Id": "UiPath.System.Activities",
-        "Version": "25.10.3"
+        "Version": "25.10.0"
       },
       "Assemblies": [
-        "C:\\Users\\msant\\.nuget\\packages\\uipath.system.activities\\25.10.3\\lib\\net6.0-windows7.0\\UiPath.System.Activities.Design.dll",
-        "C:\\Users\\msant\\.nuget\\packages\\uipath.system.activities\\25.10.3\\lib\\net6.0-windows7.0\\UiPath.System.Activities.ViewModels.dll"
+        "C:\\Users\\msant\\.nuget\\packages\\uipath.system.activities\\25.10.0\\lib\\net6.0-windows7.0\\UiPath.System.Activities.Design.dll",
+        "C:\\Users\\msant\\.nuget\\packages\\uipath.system.activities\\25.10.0\\lib\\net6.0-windows7.0\\UiPath.System.Activities.ViewModels.dll"
       ],
-      "Path": "C:\\Users\\msant\\.nuget\\packages\\uipath.system.activities\\25.10.3"
+      "Path": "C:\\Users\\msant\\.nuget\\packages\\uipath.system.activities\\25.10.0"
     },
     {
       "Package": {
         "Id": "UiPath.System.Activities.Runtime",
-        "Version": "25.10.3"
+        "Version": "25.10.0"
       },
       "Assemblies": [
-        "C:\\Users\\msant\\.nuget\\packages\\uipath.system.activities.runtime\\25.10.3\\lib\\net6.0-windows7.0\\UiPath.System.Activities.Package.Runtime.dll"
+        "C:\\Users\\msant\\.nuget\\packages\\uipath.system.activities.runtime\\25.10.0\\lib\\net6.0-windows7.0\\UiPath.System.Activities.Package.Runtime.dll"
       ],
-      "Path": "C:\\Users\\msant\\.nuget\\packages\\uipath.system.activities.runtime\\25.10.3"
+      "Path": "C:\\Users\\msant\\.nuget\\packages\\uipath.system.activities.runtime\\25.10.0"
     },
     {
       "Package": {
         "Id": "UiPath.System.Activities.Runtime.Windows",
-        "Version": "25.10.3"
+        "Version": "25.10.0"
       },
       "Assemblies": [
-        "C:\\Users\\msant\\.nuget\\packages\\uipath.system.activities.runtime.windows\\25.10.3\\lib\\net6.0-windows7.0\\UiPath.OrchestratorClient.dll",
-        "C:\\Users\\msant\\.nuget\\packages\\uipath.system.activities.runtime.windows\\25.10.3\\lib\\net6.0-windows7.0\\UiPath.ServiceClients.dll",
-        "C:\\Users\\msant\\.nuget\\packages\\uipath.system.activities.runtime.windows\\25.10.3\\lib\\net6.0-windows7.0\\UiPath.System.Activities.Api.dll",
-        "C:\\Users\\msant\\.nuget\\packages\\uipath.system.activities.runtime.windows\\25.10.3\\lib\\net6.0-windows7.0\\UiPath.System.Activities.dll"
+        "C:\\Users\\msant\\.nuget\\packages\\uipath.system.activities.runtime.windows\\25.10.0\\lib\\net6.0-windows7.0\\UiPath.OrchestratorClient.dll",
+        "C:\\Users\\msant\\.nuget\\packages\\uipath.system.activities.runtime.windows\\25.10.0\\lib\\net6.0-windows7.0\\UiPath.ServiceClients.dll",
+        "C:\\Users\\msant\\.nuget\\packages\\uipath.system.activities.runtime.windows\\25.10.0\\lib\\net6.0-windows7.0\\UiPath.System.Activities.Api.dll",
+        "C:\\Users\\msant\\.nuget\\packages\\uipath.system.activities.runtime.windows\\25.10.0\\lib\\net6.0-windows7.0\\UiPath.System.Activities.dll"
       ],
-      "Path": "C:\\Users\\msant\\.nuget\\packages\\uipath.system.activities.runtime.windows\\25.10.3"
+      "Path": "C:\\Users\\msant\\.nuget\\packages\\uipath.system.activities.runtime.windows\\25.10.0"
     },
     {
       "Package": {
@@ -5834,25 +5834,25 @@
     {
       "Package": {
         "Id": "UiPath.WebAPI.Activities",
-        "Version": "2.3.2"
+        "Version": "2.3.1"
       },
       "Assemblies": [
-        "C:\\Users\\msant\\.nuget\\packages\\uipath.webapi.activities\\2.3.2\\lib\\net6.0-windows7.0\\UiPath.Web.Activities.Design.dll",
-        "C:\\Users\\msant\\.nuget\\packages\\uipath.webapi.activities\\2.3.2\\lib\\net6.0-windows7.0\\UiPath.Web.Activities.RulesLibrary.dll",
-        "C:\\Users\\msant\\.nuget\\packages\\uipath.webapi.activities\\2.3.2\\lib\\net6.0-windows7.0\\UiPath.Web.Activities.ViewModels.dll"
+        "C:\\Users\\msant\\.nuget\\packages\\uipath.webapi.activities\\2.3.1\\lib\\net6.0-windows7.0\\UiPath.Web.Activities.Design.dll",
+        "C:\\Users\\msant\\.nuget\\packages\\uipath.webapi.activities\\2.3.1\\lib\\net6.0-windows7.0\\UiPath.Web.Activities.RulesLibrary.dll",
+        "C:\\Users\\msant\\.nuget\\packages\\uipath.webapi.activities\\2.3.1\\lib\\net6.0-windows7.0\\UiPath.Web.Activities.ViewModels.dll"
       ],
-      "Path": "C:\\Users\\msant\\.nuget\\packages\\uipath.webapi.activities\\2.3.2"
+      "Path": "C:\\Users\\msant\\.nuget\\packages\\uipath.webapi.activities\\2.3.1"
     },
     {
       "Package": {
         "Id": "UiPath.WebAPI.Activities.Runtime",
-        "Version": "2.3.2"
+        "Version": "2.3.1"
       },
       "Assemblies": [
-        "C:\\Users\\msant\\.nuget\\packages\\uipath.webapi.activities.runtime\\2.3.2\\lib\\net6.0-windows7.0\\UiPath.Web.Activities.dll",
-        "C:\\Users\\msant\\.nuget\\packages\\uipath.webapi.activities.runtime\\2.3.2\\lib\\net6.0-windows7.0\\UiPath.Web.dll"
+        "C:\\Users\\msant\\.nuget\\packages\\uipath.webapi.activities.runtime\\2.3.1\\lib\\net6.0-windows7.0\\UiPath.Web.Activities.dll",
+        "C:\\Users\\msant\\.nuget\\packages\\uipath.webapi.activities.runtime\\2.3.1\\lib\\net6.0-windows7.0\\UiPath.Web.dll"
       ],
-      "Path": "C:\\Users\\msant\\.nuget\\packages\\uipath.webapi.activities.runtime\\2.3.2"
+      "Path": "C:\\Users\\msant\\.nuget\\packages\\uipath.webapi.activities.runtime\\2.3.1"
     }
   ]
 }

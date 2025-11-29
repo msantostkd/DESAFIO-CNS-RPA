@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "q88cj3sWSl8=",
+  "dgSpecHash": "Q6W8/Grq+Tg=",
   "success": true,
-  "projectFilePath": "D:\\projetos\\Desafio CSN\\RPA_Integracao_API_BB\\.local\\",
+  "projectFilePath": "D:\\projetos\\DESAFIO-CNS-RPA\\RPA_Integracao_API_BB\\.local\\",
   "expectedPackageFiles": [
     "C:\\Users\\msant\\.nuget\\packages\\avalonedit\\6.1.3.50\\avalonedit.6.1.3.50.nupkg.sha512",
     "C:\\Users\\msant\\.nuget\\packages\\bouncycastle.cryptography\\2.3.1\\bouncycastle.cryptography.2.3.1.nupkg.sha512",
@@ -230,12 +230,12 @@
     "C:\\Users\\msant\\.nuget\\packages\\uipath.officelibs\\1.0.0\\uipath.officelibs.1.0.0.nupkg.sha512",
     "C:\\Users\\msant\\.nuget\\packages\\uipath.opentelemetry.contracts\\2.3.3\\uipath.opentelemetry.contracts.2.3.3.nupkg.sha512",
     "C:\\Users\\msant\\.nuget\\packages\\uipath.platform\\25.10.1\\uipath.platform.25.10.1.nupkg.sha512",
-    "C:\\Users\\msant\\.nuget\\packages\\uipath.system.activities\\25.10.3\\uipath.system.activities.25.10.3.nupkg.sha512",
-    "C:\\Users\\msant\\.nuget\\packages\\uipath.system.activities.runtime\\25.10.3\\uipath.system.activities.runtime.25.10.3.nupkg.sha512",
-    "C:\\Users\\msant\\.nuget\\packages\\uipath.system.activities.runtime.windows\\25.10.3\\uipath.system.activities.runtime.windows.25.10.3.nupkg.sha512",
+    "C:\\Users\\msant\\.nuget\\packages\\uipath.system.activities\\25.10.0\\uipath.system.activities.25.10.0.nupkg.sha512",
+    "C:\\Users\\msant\\.nuget\\packages\\uipath.system.activities.runtime\\25.10.0\\uipath.system.activities.runtime.25.10.0.nupkg.sha512",
+    "C:\\Users\\msant\\.nuget\\packages\\uipath.system.activities.runtime.windows\\25.10.0\\uipath.system.activities.runtime.windows.25.10.0.nupkg.sha512",
     "C:\\Users\\msant\\.nuget\\packages\\uipath.telemetry.client\\2.3.3\\uipath.telemetry.client.2.3.3.nupkg.sha512",
-    "C:\\Users\\msant\\.nuget\\packages\\uipath.webapi.activities\\2.3.2\\uipath.webapi.activities.2.3.2.nupkg.sha512",
-    "C:\\Users\\msant\\.nuget\\packages\\uipath.webapi.activities.runtime\\2.3.2\\uipath.webapi.activities.runtime.2.3.2.nupkg.sha512"
+    "C:\\Users\\msant\\.nuget\\packages\\uipath.webapi.activities\\2.3.1\\uipath.webapi.activities.2.3.1.nupkg.sha512",
+    "C:\\Users\\msant\\.nuget\\packages\\uipath.webapi.activities.runtime\\2.3.1\\uipath.webapi.activities.runtime.2.3.1.nupkg.sha512"
   ],
   "logs": []
 }
