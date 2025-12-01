@@ -1,0 +1,81 @@
+{
+  "DisplayName": "Main",
+  "Tooltip": null,
+  "HelpLink": null,
+  "Color": null,
+  "OriginalIconFileName": null,
+  "Arguments": [
+    {
+      "Name": "in_ClientID",
+      "DisplayName": "in_ClientID",
+      "Category": null,
+      "Tooltip": null,
+      "Placeholder": "[Seu Client ID de Sandbox Real]",
+      "Widget": null,
+      "IsRequired": false,
+      "IsPrincipal": true,
+      "ArgumentType": 0,
+      "DataSourceItems": null
+    },
+    {
+      "Name": "in_ClientSecret",
+      "DisplayName": "in_ClientSecret",
+      "Category": null,
+      "Tooltip": null,
+      "Placeholder": "[Seu Client Secret de Sandbox Real]",
+      "Widget": null,
+      "IsRequired": false,
+      "IsPrincipal": true,
+      "ArgumentType": 0,
+      "DataSourceItems": null
+    },
+    {
+      "Name": "in_AppKey",
+      "DisplayName": "in_AppKey",
+      "Category": null,
+      "Tooltip": null,
+      "Placeholder": "[Sua Application Key de Sandbox Real]",
+      "Widget": null,
+      "IsRequired": false,
+      "IsPrincipal": true,
+      "ArgumentType": 0,
+      "DataSourceItems": null
+    },
+    {
+      "Name": "in_AuthURL",
+      "DisplayName": "in_AuthURL",
+      "Category": null,
+      "Tooltip": null,
+      "Placeholder": "https://oauth.sandbox.bb.com.br/oauth/token",
+      "Widget": null,
+      "IsRequired": false,
+      "IsPrincipal": true,
+      "ArgumentType": 0,
+      "DataSourceItems": null
+    },
+    {
+      "Name": "in_ApiURL",
+      "DisplayName": "in_ApiURL",
+      "Category": null,
+      "Tooltip": null,
+      "Placeholder": "https://api.hm.bb.com.br/contas/v1/extratos",
+      "Widget": null,
+      "IsRequired": false,
+      "IsPrincipal": true,
+      "ArgumentType": 0,
+      "DataSourceItems": null
+    },
+    {
+      "Name": "out_AccessToken",
+      "DisplayName": "out_AccessToken",
+      "Category": null,
+      "Tooltip": null,
+      "Placeholder": null,
+      "Widget": null,
+      "IsRequired": false,
+      "IsPrincipal": true,
+      "ArgumentType": 0,
+      "DataSourceItems": null
+    }
+  ]
+}
