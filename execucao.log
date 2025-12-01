@@ -654,3 +654,37 @@ a:hover {
 2025-11-30 22:57:22,332 - INFO - Conta 452-123873 processada com sucesso.
 2025-11-30 22:57:22,332 - INFO - Gerando planilha consolidada...
 2025-11-30 22:57:22,412 - INFO - Arquivo 'extrato_consolidado.xlsx' gerado com sucesso!
+2025-11-30 23:12:36,895 - INFO - Iniciando processo de processamento de contas...
+2025-11-30 23:12:37,512 - INFO - Base de contas carregada. Total: 3 contas.
+2025-11-30 23:12:37,514 - INFO - Iniciando autenticação OAuth2 — procurando credenciais em variáveis de ambiente...
+2025-11-30 23:12:37,515 - ERROR - Variáveis de ambiente BB_CLIENT_ID e/ou BB_CLIENT_SECRET não estão definidas. Abortando autenticação.
+2025-11-30 23:12:37,517 - ERROR - Autenticação falhou — abortando processo.
+2025-11-30 23:12:37,518 - INFO - Processo finalizado.
+2025-11-30 23:19:01,147 - INFO - Iniciando processo de processamento de contas...
+2025-11-30 23:19:01,761 - INFO - Base de contas carregada. Total: 3 contas.
+2025-11-30 23:19:01,761 - INFO - Iniciando autenticação OAuth2 — procurando credenciais em variáveis de ambiente...
+2025-11-30 23:28:58,931 - INFO - Iniciando processo de processamento de contas...
+2025-11-30 23:28:59,282 - INFO - Base de contas carregada. Total: 3 contas.
+2025-11-30 23:28:59,283 - INFO - Iniciando autenticação OAuth2 — usando credenciais embutidas para avaliação...
+2025-11-30 23:28:59,283 - INFO - [AUTH] Tentativa de token (sem scope)
+2025-11-30 23:29:01,161 - INFO - [AUTH] status=200 resp_preview={"access_token":"hWlqm8cI8lI45ejl4IMfkScaL2Se1Qe0cvZvWI-BDEjA-jr1VqK2gvpQA6emTJQNuSQPVYSjjHt9qiTBI2GdQA.wFhg6Jw09Jt9ixDRDrZ2rllMqmDAUQKCi3NxqTyRHYxwSZH3VWutV9uTwrWPj4_u_LRDxRCWaSr74Aq2gn9Fplgl7lxQ4C0fVUxiIButujP5Xdj1bXU8zIVjrAQIz3ofO1rM5rznLsFUrK-T5DOqU0D6AUd4f3S9ManIUIs_wnzjftTGMugQk5hiO21rghqydeGP
+2025-11-30 23:29:01,162 - INFO - Autenticação sucedida (sem scope).
+2025-11-30 23:29:01,243 - INFO - Processando conta: 551-5087 (MCITest: 26968930)
+2025-11-30 23:29:01,243 - INFO - URL de Requisição (GET) (Conta 551-5087) page=1: https://api.hm.bb.com.br/extratos/v1/conta-corrente/agencia/551/conta/5087?gw-dev-app-key=2dc673fdaa5e4db68f1019d2d9027c01&dataInicioSolicitacao=0&dataFimSolicitacao=0&numeroPaginaSolicitacao=1&quantidadeRegistroPaginaSolicitacao=200
+2025-11-30 23:29:02,664 - INFO - GET page=1 -> status=200. resp_preview={"numeroPaginaAtual": 1, "quantidadeRegistroPaginaAtual": 200, "numeroPaginaAnterior": 0,"numeroPaginaProximo": 2,"quantidadeTotalPagina": 2,"quantidadeTotalRegistro": 212,"listaLancamento":[ {"indicadorTipoLancamento": "1","dataLancamento": 31102025,"dataMovimento": 0,"codigoAgenciaOrigem": 0,"numeroLote": 0,"numeroDocumento": 0,"codigoHistorico": 0,"textoDescricaoHistorico": "SALDO ANTERIOR","va
+2025-11-30 23:29:02,666 - INFO - URL de Requisição (GET) (Conta 551-5087) page=2: https://api.hm.bb.com.br/extratos/v1/conta-corrente/agencia/551/conta/5087?gw-dev-app-key=2dc673fdaa5e4db68f1019d2d9027c01&dataInicioSolicitacao=0&dataFimSolicitacao=0&numeroPaginaSolicitacao=2&quantidadeRegistroPaginaSolicitacao=200
+2025-11-30 23:29:04,723 - INFO - GET page=2 -> status=200. resp_preview={"numeroPaginaAtual": 2, "quantidadeRegistroPaginaAtual": 12, "numeroPaginaAnterior": 1,"numeroPaginaProximo": 0,"quantidadeTotalPagina": 2,"quantidadeTotalRegistro": 212,"listaLancamento":[ {"indicadorTipoLancamento": "1","dataLancamento": 27112025,"dataMovimento": 0,"codigoAgenciaOrigem": 0,"numeroLote": 0,"numeroDocumento": 0,"codigoHistorico": 0,"textoDescricaoHistorico": "Saldo do dia","valor
+2025-11-30 23:29:04,804 - INFO - Conta 551-5087: Encontrados 212 lançamentos.
+2025-11-30 23:29:04,963 - INFO - Conta 551-5087 processada com sucesso.
+2025-11-30 23:29:04,966 - INFO - Processando conta: 1505-1348 (MCITest: 178961031)
+2025-11-30 23:29:04,971 - INFO - URL de Requisição (GET) (Conta 1505-1348) page=1: https://api.hm.bb.com.br/extratos/v1/conta-corrente/agencia/1505/conta/1348?gw-dev-app-key=2dc673fdaa5e4db68f1019d2d9027c01&dataInicioSolicitacao=0&dataFimSolicitacao=0&numeroPaginaSolicitacao=1&quantidadeRegistroPaginaSolicitacao=200
+2025-11-30 23:29:06,207 - INFO - GET page=1 -> status=500. resp_preview={"erros": [{"codigo": "5738730","versao": "1","mensagem": "Erro Interno do Servidor","ocorrencia": "000000000000000000042995"}]}
+2025-11-30 23:29:06,211 - ERROR - Falha na conta 1505-1348: Erro HTTP 500: {"erros": [{"codigo": "5738730","versao": "1","mensagem": "Erro Interno do Servidor","ocorrencia": "000000000000000000042995"}]}
+2025-11-30 23:29:06,212 - INFO - Processando conta: 452-123873 (MCITest: 704950857)
+2025-11-30 23:29:06,213 - INFO - URL de Requisição (GET) (Conta 452-123873) page=1: https://api.hm.bb.com.br/extratos/v1/conta-corrente/agencia/452/conta/123873?gw-dev-app-key=2dc673fdaa5e4db68f1019d2d9027c01&dataInicioSolicitacao=0&dataFimSolicitacao=0&numeroPaginaSolicitacao=1&quantidadeRegistroPaginaSolicitacao=200
+2025-11-30 23:29:07,431 - INFO - GET page=1 -> status=200. resp_preview={"numeroPaginaAtual": 1, "quantidadeRegistroPaginaAtual": 143, "numeroPaginaAnterior": 0,"numeroPaginaProximo": 0,"quantidadeTotalPagina": 1,"quantidadeTotalRegistro": 143,"listaLancamento":[ {"indicadorTipoLancamento": "1","dataLancamento": 31102025,"dataMovimento": 0,"codigoAgenciaOrigem": 0,"numeroLote": 0,"numeroDocumento": 0,"codigoHistorico": 0,"textoDescricaoHistorico": "SALDO ANTERIOR","va
+2025-11-30 23:29:07,439 - INFO - Conta 452-123873: Encontrados 143 lançamentos.
+2025-11-30 23:29:07,442 - INFO - Conta 452-123873 processada com sucesso.
+2025-11-30 23:29:07,443 - INFO - Gerando planilha consolidada...
+2025-11-30 23:29:07,774 - INFO - Arquivo 'extrato_consolidado.xlsx' gerado com sucesso!
+2025-11-30 23:29:07,775 - INFO - Processo finalizado.

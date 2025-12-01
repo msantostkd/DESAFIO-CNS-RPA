@@ -1,22 +1,28 @@
 #!/usr/bin/env python3
-# main.py — BankingAutomator (versão integrada com correções de autenticação e formato da API de extratos)
+"""
+main.py — BankingAutomator (versão final para entrega, com credenciais embutidas para avaliação)
+- Observação: credenciais hardcoded apenas para avaliação em ambiente homolog.
+"""
 
 import os
 import logging
-import base64
 from datetime import datetime
 import requests
 from requests.auth import HTTPBasicAuth
 import pandas as pd
 
-# --- CONFIGURAÇÕES DO PROJETO (sem credenciais sensíveis hardcoded) ---
+# --- CONFIGURAÇÕES DO PROJETO ---
 CONFIG = {
     "APP_KEY": "2dc673fdaa5e4db68f1019d2d9027c01",
     "AUTH_URL": "https://oauth.hm.bb.com.br/oauth/token",
     "API_URL": "https://api.hm.bb.com.br/extratos/v1/conta-corrente/agencia/{agencia}/conta/{conta}",
     "INPUT_FILE": "contas_input.xlsx",
     "OUTPUT_FILE": "extrato_consolidado.xlsx",
-    "MOCK_MODE": False
+    # page_size: entre 50 e 200 conforme spec; 100 é um bom padrão
+    "PAGE_SIZE": 200,
+    # Período padrão (DDMMAAAA). Ajuste conforme necessidade ou parametrizar por entrada.
+    "DEFAULT_DATA_INICIO": "0",
+    "DEFAULT_DATA_FIM": "0",
 }
 
 # --- LOG ---
@@ -29,7 +35,8 @@ logging.basicConfig(
     ]
 )
 
-print("=== Iniciando main.py — BankingAutomator ===")
+logger = logging.getLogger(__name__)
+
 
 class BankingAutomator:
     def __init__(self):
@@ -37,9 +44,9 @@ class BankingAutomator:
         self.logs_execucao = []
 
     def _gerar_input_teste(self):
-        """Gera arquivo de input se não existir (massa de teste)."""
+        """ Gera arquivo de input se não existir (apenas para facilitar testes locais). """
         if not os.path.exists(CONFIG["INPUT_FILE"]):
-            logging.info("Arquivo de input não encontrado. Gerando massa de teste...")
+            logger.info("Arquivo de input não encontrado. Gerando massa de teste...")
             df = pd.DataFrame({
                 'MCITest': ['26968930', '178961031', '704950857'],
                 'Agencia': ['551', '1505', '452'],
@@ -50,139 +57,151 @@ class BankingAutomator:
     def autenticar(self):
         """
         Autenticação OAuth2:
-        - Tenta obter client_id/secret das variáveis de ambiente BB_CLIENT_ID / BB_CLIENT_SECRET (strip).
-        - Se não definidas, usa fallback literal somente para teste local.
-        - Faz POST para /oauth/token usando HTTPBasicAuth (sem scope primeiro, depois com scope).
+        - Para avaliação: credenciais estão hardcoded abaixo (somente homolog).
+        - Faz POST para /oauth/token usando HTTPBasicAuth (sem scope primeiro).
         """
-        logging.info("Iniciando autenticação OAuth2 (modo seguro)...")
+        logger.info("Iniciando autenticação OAuth2 — usando credenciais embutidas para avaliação...")
 
-        # ler variáveis de ambiente e strip
-        env_client_id = os.getenv("BB_CLIENT_ID")
-        env_client_secret = os.getenv("BB_CLIENT_SECRET")
-        client_id = env_client_id.strip() if env_client_id is not None else None
-        client_secret = env_client_secret.strip() if env_client_secret is not None else None
+        # >>> Credenciais fixas para avaliação (somente para ambiente de homologação)
+        client_id = "eyJpZCI6ImU0NTYiLCJjb2RpZ29QdWJsaWNhZG9yIjowLCJjb2RpZ29Tb2Z0d2FyZSI6MTYzMDUwLCJzZXF1ZW5jaWFsSW5zdGFsYWNhbyI6MX0"
+        client_secret = "eyJpZCI6IjkzY2Q2NGQtNWE5Yy00ZTA5LTk4ZmEtYmI0ZDcyMDIyMyIsImNvZGlnb1B1YmxpY2Fkb3IiOjAsImNvZGlnb1NvZnR3YXJlIjoxNjMwNTAsInNlcXVlbmNpYWxJbnN0YWxhY2FvIjoxLCJzZXF1ZW5jaWFsQ3JlZGVuY2lhbCI6MiwiYW1iaWVudGUiOiJob21vbG9nYWNhbyIsImlhdCI6MTc2NDA3NjYwMzQ5OX0"
 
-        # fallback literal (apenas para testes locais; prefira definir variáveis de ambiente)
-        fallback_client_id = "eyJpZCI6ImU0NTYiLCJjb2RpZ29QdWJsaWNhZG9yIjowLCJjb2RpZ29Tb2Z0d2FyZSI6MTYzMDUwLCJzZXF1ZW5jaWFsSW5zdGFsYWNhbyI6MX0"
-        fallback_client_secret = "eyJpZCI6IjkzY2Q2NGQtNWE5Yy00ZTA5LTk4ZmEtYmI0ZDcyMDIyMyIsImNvZGlnb1B1YmxpY2Fkb3IiOjAsImNvZGlnb1NvZnR3YXJlIjoxNjMwNTAsInNlcXVlbmNpYWxJbnN0YWxhY2FvIjoxLCJzZXF1ZW5jaWFsQ3JlZGVuY2lhbCI6MiwiYW1iaWVudGUiOiJob21vbG9nYWNhbyIsImlhdCI6MTc2NDA3NjYwMzQ5OX0"
-
-        if client_id and client_secret:
-            logging.info("Usando credenciais provenientes de variáveis de ambiente (após strip).")
-        else:
-            logging.info("Variáveis de ambiente não definidas ou incompletas — usando fallback literal para teste.")
-            client_id = client_id or fallback_client_id
-            client_secret = client_secret or fallback_client_secret
-
-        if CONFIG["MOCK_MODE"]:
-            self.token = "mock_token_123456"
-            logging.info("Autenticação MOCK realizada com sucesso.")
-            return True
+        # sanitização simples (não faz mal, string já correta)
+        client_id = client_id.strip()
+        client_secret = client_secret.strip()
 
         url = CONFIG["AUTH_URL"]
         headers = {"Content-Type": "application/x-www-form-urlencoded"}
 
-        # 1) tentar sem scope (corresponde ao seu teste isolado que funcionou)
+        # 1) tentar sem scope (corresponde ao teste que funcionou)
         try:
             payload_simple = {"grant_type": "client_credentials"}
-            logging.info("[T1] Tentativa de token (sem scope)...")
+            logger.info("[AUTH] Tentativa de token (sem scope)")
             r = requests.post(url, headers=headers, data=payload_simple,
                               auth=HTTPBasicAuth(client_id, client_secret), timeout=15)
-            logging.info(f"[T1] status={r.status_code} resp (preview): {r.text[:300]}")
+            logger.info(f"[AUTH] status={r.status_code} resp_preview={r.text[:300]}")
             if r.status_code == 200 and r.json().get("access_token"):
                 self.token = r.json().get("access_token")
-                logging.info("Autenticação sucedida (sem scope).")
+                logger.info("Autenticação sucedida (sem scope).")
                 return True
         except Exception as e:
-            logging.warning(f"Exceção na tentativa sem scope: {e}")
+            logger.warning(f"Exceção durante autenticação (sem scope): {e}")
 
-        # 2) tentar com scope (fallback)
+        # 2) fallback: tentar com scope caso precise
         try:
             payload_scope = {"grant_type": "client_credentials", "scope": "extratos.leitura"}
-            logging.info("[T2] Tentativa de token (com scope)...")
+            logger.info("[AUTH] Tentativa de token (com scope)")
             r2 = requests.post(url, headers=headers, data=payload_scope,
                                auth=HTTPBasicAuth(client_id, client_secret), timeout=15)
-            logging.info(f"[T2] status={r2.status_code} resp (preview): {r2.text[:300]}")
+            logger.info(f"[AUTH] status={r2.status_code} resp_preview={r2.text[:300]}")
             if r2.status_code == 200 and r2.json().get("access_token"):
                 self.token = r2.json().get("access_token")
-                logging.info("Autenticação sucedida (com scope).")
+                logger.info("Autenticação sucedida (com scope).")
                 return True
         except Exception as e:
-            logging.warning(f"Exceção na tentativa com scope: {e}")
+            logger.warning(f"Exceção durante autenticação (com scope): {e}")
 
-        logging.error("Falha em ambas as tentativas de autenticação. Verifique credenciais e ambiente (homolog/prod).")
+        logger.error("Falha na autenticação. Verifique credenciais e ambiente (homolog/prod).")
         return False
 
-    def consultar_extrato(self, agencia, conta, mcitest):
+    @staticmethod
+    def _parse_ddmmaaaa(value):
+        """Converte int/str DDMMAAAA para string 'DD/MM/YYYY'. Retorna None se inválido."""
+        try:
+            s = str(value)
+            if len(s) == 8:
+                dd, mm, yyyy = s[:2], s[2:4], s[4:]
+                return f"{dd}/{mm}/{yyyy}"
+            return None
+        except Exception:
+            return None
+
+    def consultar_extrato(self, agencia, conta, mcitest,
+                          data_inicio=None, data_fim=None, page_size=None):
         """
-        Consulta o extrato - versão corrigida:
+        Consulta o extrato conforme spec:
         - GET /conta-corrente/agencia/{agencia}/conta/{conta}
-        - Parâmetros na query: gw-dev-app-key, dataInicioSolicitacao (DDMMAAAA int), dataFimSolicitacao (DDMMAAAA int),
+        - Parâmetros na query: gw-dev-app-key, dataInicioSolicitacao (DDMMAAAA string), dataFimSolicitacao (DDMMAAAA string),
           numeroPaginaSolicitacao (int), quantidadeRegistroPaginaSolicitacao (int)
         - Envia também o header x-br-com-bb-ipa-mciteste por compatibilidade.
-        """
-        if CONFIG["MOCK_MODE"]:
-            return {
-                "listaLancamento": [
-                    {"dataLancamento": "15/11/2023", "numeroDocumento": "1001", "valorLancamento": 150.00, "textoDescricaoHistorico": "PIX RECEBIDO"},
-                ]
-            }, None
 
+        Retorna ({"listaLancamento": [...]}, None) ou (None, erro_str)
+        """
         extrato_url = CONFIG["API_URL"].format(agencia=agencia, conta=conta)
 
         headers = {
             "Authorization": f"Bearer {self.token}",
             "Accept": "application/json",
             "X-Developer-Application-Key": CONFIG["APP_KEY"],
-            # MCITest em header (algumas integrações exigem)
             "x-br-com-bb-ipa-mciteste": str(mcitest)
         }
 
-        # --- ATENÇÃO AO FORMATO DAS DATAS: DDMMAAAA (sem pontos) ---
-        # Ajuste aqui as datas conforme o período desejado
-        # Se preferir, pode extrair das colunas/entrada para parametrizar por conta.
-        data_inicio = "0"   # Ex: 01/11/2024 -> "01112024"
-        data_fim   = "0"    # Ex: 30/11/2024 -> "30112024"
+        data_inicio = data_inicio or CONFIG["DEFAULT_DATA_INICIO"]
+        data_fim = data_fim or CONFIG["DEFAULT_DATA_FIM"]
+        page_size = page_size or CONFIG["PAGE_SIZE"]
 
-        params = {
-            "gw-dev-app-key": CONFIG["APP_KEY"],
-            "dataInicioSolicitacao": int(data_inicio),
-            "dataFimSolicitacao": int(data_fim),
-            "numeroPaginaSolicitacao": 1,              # inteiro
-            "quantidadeRegistroPaginaSolicitacao": 200 # inteiro (50..200 conforme spec)
-        }
+        # paginação
+        page = 1
+        all_lancamentos = []
+        total_pages = 1
 
-        # Gerar URL de debug
-        try:
-            full_request_url = requests.Request('GET', extrato_url, params=params).prepare().url
-            logging.info(f"URL de Requisição (GET) (Conta {agencia}-{conta}): {full_request_url}")
-        except Exception as e:
-            logging.warning(f"Não foi possível gerar a URL de debug: {e}")
+        while page <= total_pages:
+            params = {
+                "gw-dev-app-key": CONFIG["APP_KEY"],
+                "dataInicioSolicitacao": data_inicio,
+                "dataFimSolicitacao": data_fim,
+                "numeroPaginaSolicitacao": page,
+                "quantidadeRegistroPaginaSolicitacao": page_size
+            }
 
-        try:
-            r = requests.get(extrato_url, headers=headers, params=params, timeout=20)
-            logging.info(f"GET -> status={r.status_code}. resp (inic): {r.text[:400]}")
-            if r.status_code == 200:
-                return r.json(), None
-            else:
-                return None, f"Erro HTTP {r.status_code}: {r.text}"
-        except requests.exceptions.HTTPError as e:
-            return None, f"Erro HTTP {e.response.status_code}: {e.response.text}"
-        except Exception as e:
-            return None, f"Erro genérico na consulta do extrato: {e}"
+            try:
+                full_request_url = requests.Request('GET', extrato_url, params=params).prepare().url
+                logger.info(f"URL de Requisição (GET) (Conta {agencia}-{conta}) page={page}: {full_request_url}")
+            except Exception as e:
+                logger.warning(f"Não foi possível gerar a URL de debug: {e}")
+
+            try:
+                r = requests.get(extrato_url, headers=headers, params=params, timeout=20)
+                logger.info(f"GET page={page} -> status={r.status_code}. resp_preview={r.text[:400]}")
+                if r.status_code != 200:
+                    return None, f"Erro HTTP {r.status_code}: {r.text}"
+
+                j = r.json()
+                lista = j.get("listaLancamento", [])
+                all_lancamentos.extend(lista)
+
+                # Atualiza total_pages a partir da resposta
+                total_pages = j.get("quantidadeTotalPagina") or total_pages
+                if (not total_pages) and j.get("quantidadeTotalRegistro"):
+                    total_reg = j.get("quantidadeTotalRegistro")
+                    total_pages = (total_reg + page_size - 1) // page_size
+
+                page += 1
+
+            except Exception as e:
+                return None, f"Erro genérico na consulta do extrato (page {page}): {e}"
+
+        # Formatação das datas e adição de campo formatado
+        for item in all_lancamentos:
+            if "dataLancamento" in item:
+                parsed = self._parse_ddmmaaaa(item["dataLancamento"])
+                item["dataLancamento_format"] = parsed or item.get("dataLancamento")
+
+        return {"listaLancamento": all_lancamentos}, None
 
     def processar(self):
-        logging.info("Iniciando processo de processamento de contas...")
+        logger.info("Iniciando processo de processamento de contas...")
         self._gerar_input_teste()
 
         try:
             df_contas = pd.read_excel(CONFIG["INPUT_FILE"], dtype=str)
-            logging.info(f"Base de contas carregada. Total: {len(df_contas)} contas.")
+            logger.info(f"Base de contas carregada. Total: {len(df_contas)} contas.")
         except Exception as e:
-            logging.critical(f"Não foi possível ler o arquivo de entrada: {e}")
+            logger.critical(f"Não foi possível ler o arquivo de entrada: {e}")
             return
 
         if not self.autenticar():
-            logging.error("Autenticação falhou — abortando processo.")
+            logger.error("Autenticação falhou — abortando processo.")
             return
 
         abas_excel = {}
@@ -193,12 +212,12 @@ class BankingAutomator:
             conta = row['Conta']
             chave_conta = f"{agencia}-{conta}"
 
-            logging.info(f"Processando conta: {chave_conta} (MCITest: {mcitest})")
+            logger.info(f"Processando conta: {chave_conta} (MCITest: {mcitest})")
 
             dados_json, erro = self.consultar_extrato(agencia, conta, mcitest)
 
             if erro:
-                logging.error(f"Falha na conta {chave_conta}: {erro}")
+                logger.error(f"Falha na conta {chave_conta}: {erro}")
                 self.logs_execucao.append({
                     "Agencia": agencia,
                     "Conta": conta,
@@ -207,15 +226,18 @@ class BankingAutomator:
                 })
             else:
                 try:
-                    # Chave JSON de lista de lançamentos
-                    lista_lancamentos = dados_json.get('listaLancamento', dados_json.get('data', []))
+                    lista_lancamentos = dados_json.get('listaLancamento', [])
                     df_extrato = pd.DataFrame(lista_lancamentos)
 
-                    logging.info(f"Conta {chave_conta}: Encontrados {len(df_extrato)} lançamentos.")
+                    logger.info(f"Conta {chave_conta}: Encontrados {len(df_extrato)} lançamentos.")
 
-                    # Colunas obrigatórias (se não existir, cria vazia)
-                    cols_desejadas = ['dataLancamento', 'numeroDocumento', 'valorLancamento', 'textoDescricaoHistorico']
+                    cols_desejadas = ['dataLancamento_format', 'numeroDocumento', 'valorLancamento', 'textoDescricaoHistorico']
                     df_extrato = df_extrato[cols_desejadas] if not df_extrato.empty else pd.DataFrame(columns=cols_desejadas)
+
+                    # renomear coluna para ficar amigável no Excel
+                    df_extrato = df_extrato.rename(columns={
+                        'dataLancamento_format': 'dataLancamento',
+                    })
 
                     abas_excel[chave_conta] = df_extrato
                     self.logs_execucao.append({
@@ -224,9 +246,9 @@ class BankingAutomator:
                         "Status": "OK",
                         "Detalhe": "Processado com sucesso"
                     })
-                    logging.info(f"Conta {chave_conta} processada com sucesso.")
+                    logger.info(f"Conta {chave_conta} processada com sucesso.")
                 except Exception as e:
-                    logging.error(f"Erro ao processar JSON da conta {chave_conta}: {e}")
+                    logger.error(f"Erro ao processar JSON da conta {chave_conta}: {e}")
                     self.logs_execucao.append({
                         "Agencia": agencia,
                         "Conta": conta,
@@ -237,7 +259,7 @@ class BankingAutomator:
         self.gerar_planilha_consolidada(abas_excel)
 
     def gerar_planilha_consolidada(self, abas_dados):
-        logging.info("Gerando planilha consolidada...")
+        logger.info("Gerando planilha consolidada...")
 
         try:
             with pd.ExcelWriter(CONFIG["OUTPUT_FILE"], engine='openpyxl') as writer:
@@ -246,11 +268,12 @@ class BankingAutomator:
                 for nome_aba, df in abas_dados.items():
                     nome_safe = nome_aba[:31]
                     df.to_excel(writer, sheet_name=nome_safe, index=False)
-            logging.info(f"Arquivo '{CONFIG['OUTPUT_FILE']}' gerado com sucesso!")
+            logger.info(f"Arquivo '{CONFIG['OUTPUT_FILE']}' gerado com sucesso!")
         except Exception as e:
-            logging.error(f"Erro ao salvar Excel: {e}")
+            logger.error(f"Erro ao salvar Excel: {e}")
+
 
 if __name__ == "__main__":
     bot = BankingAutomator()
     bot.processar()
-    print("=== main.py finalizado ===")
+    logger.info("Processo finalizado.")
