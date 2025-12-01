@@ -1,0 +1,230 @@
+{
+  "info": {
+    "name": "Desafio-CNS-RPA - Extratos (BB) - Collection",
+    "description": "Coleção para obter token (client_credentials) e consultar extratos. Ajuste variáveis da coleção antes de usar.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_postman_id": "7b8f2e7a-2d8e-4b0f-9e1c-123456789abc"
+  },
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "https://api.hm.bb.com.br",
+      "type": "string",
+      "description": "Base URL para as chamadas de API (use https://api.hm.bb.com.br para extratos)."
+    },
+    {
+      "key": "oauth_url",
+      "value": "https://oauth.hm.bb.com.br",
+      "type": "string"
+    },
+    {
+      "key": "client_id",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "key": "client_secret",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "key": "app_key",
+      "value": "2dc673fdaa5e4db68f1019d2d9027c01",
+      "type": "string"
+    },
+    {
+      "key": "access_token",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "key": "agencia",
+      "value": "551",
+      "type": "string"
+    },
+    {
+      "key": "conta",
+      "value": "5087",
+      "type": "string"
+    },
+    {
+      "key": "mcitest",
+      "value": "26968930",
+      "type": "string"
+    },
+    {
+      "key": "dataInicio",
+      "value": "01112024",
+      "type": "string"
+    },
+    {
+      "key": "dataFim",
+      "value": "30112024",
+      "type": "string"
+    },
+    {
+      "key": "page",
+      "value": "1",
+      "type": "string"
+    },
+    {
+      "key": "pageSize",
+      "value": "100",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "Get Token (manual)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/x-www-form-urlencoded"
+          }
+        ],
+        "body": {
+          "mode": "urlencoded",
+          "urlencoded": [
+            {
+              "key": "grant_type",
+              "value": "client_credentials",
+              "type": "text"
+            }
+          ]
+        },
+        "url": {
+          "raw": "{{oauth_url}}/oauth/token",
+          "host": [
+            "{{oauth_url}}"
+          ],
+          "path": [
+            "oauth",
+            "token"
+          ]
+        },
+        "description": "Solicita token via client_credentials. Use Authorization: Basic (preencha client_id/client_secret no Authorization tab do Postman ou crie uma Authorization Basic manual)."
+      },
+      "response": []
+    },
+    {
+      "name": "Get Extrato (automatic token)",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          },
+          {
+            "key": "X-Developer-Application-Key",
+            "value": "{{app_key}}"
+          }
+        ],
+        "url": {
+          "raw": "{{base_url}}/extratos/v1/conta-corrente/agencia/{{agencia}}/conta/{{conta}}?gw-dev-app-key={{app_key}}&dataInicioSolicitacao={{dataInicio}}&dataFimSolicitacao={{dataFim}}&numeroPaginaSolicitacao={{page}}&quantidadeRegistroPaginaSolicitacao={{pageSize}}",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "extratos",
+            "v1",
+            "conta-corrente",
+            "agencia",
+            "{{agencia}}",
+            "conta",
+            "{{conta}}"
+          ],
+          "query": [
+            {
+              "key": "gw-dev-app-key",
+              "value": "{{app_key}}"
+            },
+            {
+              "key": "dataInicioSolicitacao",
+              "value": "{{dataInicio}}"
+            },
+            {
+              "key": "dataFimSolicitacao",
+              "value": "{{dataFim}}"
+            },
+            {
+              "key": "numeroPaginaSolicitacao",
+              "value": "{{page}}"
+            },
+            {
+              "key": "quantidadeRegistroPaginaSolicitacao",
+              "value": "{{pageSize}}"
+            }
+          ]
+        },
+        "description": "Consulta extratos — este request tem um pre-request script que obtém token automaticamente e define Authorization header."
+      },
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "// Pre-request: solicita token via client_credentials e salva em variável 'access_token'",
+              "var oauthUrl = pm.variables.get('oauth_url') || 'https://oauth.hm.bb.com.br';",
+              "var clientId = pm.variables.get('client_id');",
+              "var clientSecret = pm.variables.get('client_secret');",
+              "var appKey = pm.variables.get('app_key');",
+              "",
+              "if (!clientId || !clientSecret) {",
+              "    console.log('client_id / client_secret não definidos nas variáveis da coleção.');",
+              "}",
+              "",
+              "var basic = 'Basic ' + btoa(clientId + ':' + clientSecret);",
+              "",
+              "pm.sendRequest({",
+              "    url: oauthUrl + '/oauth/token',",
+              "    method: 'POST',",
+              "    header: {",
+              "        'Content-Type': 'application/x-www-form-urlencoded',",
+              "        'Authorization': basic",
+              "    },",
+              "    body: {",
+              "        mode: 'urlencoded',",
+              "        urlencoded: [",
+              "            { key: 'grant_type', value: 'client_credentials' }",
+              "        ]",
+              "    }",
+              "}, function (err, res) {",
+              "    if (err) {",
+              "        console.log('Erro ao obter token:', err);",
+              "        return;",
+              "    }",
+              "    var json = res.json();",
+              "    if (json && json.access_token) {",
+              "        pm.variables.set('access_token', json.access_token);",
+              "        console.log('Token salvo em variável access_token');",
+              "    } else {",
+              "        console.log('Resposta token:', res.text());",
+              "    }",
+              "});"
+            ]
+          }
+        },
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "// Test script: define header Authorization com o token já obtido",
+              "var token = pm.variables.get('access_token');",
+              "if (token) {",
+              "    pm.request.headers.upsert({ key: 'Authorization', value: 'Bearer ' + token });",
+              "} else {",
+              "    console.log('Nenhum token encontrado em access_token');",
+              "}"
+            ]
+          }
+        }
+      ],
+      "response": []
+    }
+  ]
+}
