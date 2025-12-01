@@ -67,9 +67,9 @@ Esta seção atende aos requisitos de documentação do projeto Python.
 1.  Certifique-se de que o ambiente virtual está **ativo**.
 2.  Execute o script diretamente no terminal:
     ```bash
-    python [NOME_DO_SEU_SCRIPT].py
+    python main.py
     ```
-3.  **Resultado:** O script irá gerar o arquivo `extrato_master_python.xlsx` com o extrato em abas por conta (formato `agencia-conta`) e o log de execução.
+3.  **Resultado:** O script irá gerar o arquivo `extrato_consolidado.xlsx` com o extrato em abas por conta (formato `agencia-conta`) e o log de execução.
 
 ---
 
@@ -79,7 +79,7 @@ Esta seção atende aos requisitos de documentação do projeto Python.
 
 A Collection do Postman utilizada para testes manuais e validação das chamadas API (Autenticação e Extrato) está inclusa no repositório. O arquivo exportado é:
 
-* `[NOME_DO_ARQUIVO_POSTMAN.json]`
+* `Postman_Collection_Extratos.json`
 
 ### 3.2 Versionamento GitHub
 
